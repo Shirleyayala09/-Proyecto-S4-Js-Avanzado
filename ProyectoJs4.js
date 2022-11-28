@@ -7,7 +7,7 @@ usuarios= []
 let $id = 0
 function registrar(idmod = null) {
     let info = prompt('Ingrese la siguiente información: (nombre, apellido, edad, profesion)')
-    let obj = {Id:$id,  Nombre: '', Apellido: '', Edad: 0, Profesión: ''}
+    let obj = {id:$id,  Nombre: '', Apellido: '', Edad: 0, Profesión: ''}
     let infoArr = info.split(' ');
 
     let pos = 0;
@@ -163,6 +163,7 @@ function pintarhtml( array, nrodeobjeto = null ) {
         for (const key in objbase) {
             const $th = document.createElement('th');
             $th.textContent = key;
+            $th.style.cursor = 'pointer'
               // Zona ordanamiento
               $th.addEventListener('click', () => {
                 $tbody.innerHTML = ''
@@ -188,6 +189,7 @@ function pintarhtml( array, nrodeobjeto = null ) {
     for (const key in array[nrodeobjeto]) {
         const $th = document.createElement('th');
         $th.textContent = key;
+        $th.setAttribute("cursor","pointer")
         // zona ordenamiento
         $th.addEventListener('click', () => {
             $tbody.innerHTML = ''
