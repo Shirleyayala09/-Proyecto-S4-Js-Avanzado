@@ -190,7 +190,7 @@ function pintarhtml( array, nrodeobjeto = null ) {
     for (const key in array[nrodeobjeto]) {
         const $th = document.createElement('th');
         $th.textContent = key;
-        $th.setAttribute("cursor","pointer")
+        $th.style.cursor = 'pointer'
         // zona ordenamiento
         $th.addEventListener('click', () => {
             $tbody.innerHTML = ''
@@ -309,20 +309,51 @@ $btndelete.addEventListener("click", ()=> {
 // (como en el caso de Pokemon). Sin embargo, al momento de hacer click nuevamente en el encabezado, los datos
 // deben ordenarse de manera inversa. Ejemplo: Si al hacer click se ordenan de menor a mayor, al volver a hacer
 // click deben ordenarse de mayor a menor.
+
+
+
+// function ordenar(reverse, propiedad = 'created_at') {
+//     if( reverse === true ){
+//         if(isNaN(propiedad)){
+//             usuarios.sort((a, b) => a[propiedad].localeCompare(b[propiedad]))
+//         }else {
+//             usuarios.sort((a,b) => a[propiedad] - b[propiedad])
+//         }
+//         reverse = false
+//     }else {
+//             if(isNaN(propiedad)){
+//                 usuarios.sort( (a, b) => b[propiedad].localeCompare(a[propiedad]))
+//             }else {
+//                 usuarios.sort( (b, a) => b[propiedad] -a[propiedad])
+//             }
+//         reverse = true
+//     }}
+
+
+
 function ordenar(reverse, propiedad = 'created_at') {
-    if( reverse === true ){
-        if(isNaN(propiedad)){
-            usuarios.sort((a, b) => a[propiedad].localeCompare(b[propiedad]))
-        }else {
-            usuarios.sort((a,b) => a[propiedad] - b[propiedad])
-        }
-        reverse = false
-    }else {
-            if(isNaN(propiedad)){
-                usuarios.sort( (a, b) => b[propiedad].localeCompare(a[propiedad]))
-            }else {
-                usuarios.sort( (b, a) => b[propiedad] -a[propiedad])
+    if( reverse === true ) {
+        usuarios.sort( (a, b) => {
+            if( a[propiedad] < b[propiedad]) {
+                return 1
+            }else if (a[propiedad] > b[propiedad]){
+                return -1
+            } else {
+                return 0
             }
-            reverse = true
-    }}
+        })
+        reverse = false;
+    } else {
+        usuarios.sort( (a, b) => {
+            if( a[propiedad] > b[propiedad]) {
+                return 1
+            }else if (a[propiedad] < b[propiedad]) {
+                return -1
+            } else {
+                return 0
+            }
+        })
+        reverse = true
+    }
+}
 // OPCIONAL2: Crear un selector que permita filtrar los datos por fecha.
