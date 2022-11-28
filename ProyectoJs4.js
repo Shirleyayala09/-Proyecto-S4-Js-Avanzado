@@ -135,7 +135,7 @@ $root.append($btn)
 
 const $tabla =document.createElement('table')
 //$tabla.setAttribute('border', 'collapse')
-$tabla.classList.add("table", "table-bordered","table-dark","table-striped")
+$tabla.classList.add("table", "table-bordered","table-light","table-striped")
 const $thead = document.createElement('thead')
 const $tbody =document.createElement ('tbody')
 const $trh = document.createElement('tr')
@@ -163,6 +163,7 @@ function pintarhtml( array, nrodeobjeto = null ) {
         for (const key in objbase) {
             const $th = document.createElement('th');
             $th.textContent = key;
+            $th.style.textAlign="center"
             $th.style.cursor = 'pointer'
               // Zona ordanamiento
               $th.addEventListener('click', () => {
@@ -212,13 +213,14 @@ function pintarhtml( array, nrodeobjeto = null ) {
     // tbody
     for ( posicion in array) {
         const $tr = document.createElement('tr')
+        
 
         for (let i = 0; i < Object.keys(array[posicion]).length; i++) {
 
             let prop = Object.keys(array[posicion])[i];
             const $td = document.createElement('td')
             $td.textContent = array[posicion][prop];
-        
+            $td.style.textAlign="center"
             $tr.append($td)
         }
 
@@ -281,7 +283,7 @@ $btnupdate.addEventListener('click', () => {
  
 const $btndelete = document.createElement('button');
 $btndelete.classList.add("btn", "btn-danger")
-$btndelete.textContent ='Borrar registro';
+$btndelete.textContent ='Borrar usuario';
 
 $root.append($btndelete);
 
